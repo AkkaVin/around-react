@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './App.css';
+
 
 function App() {
   return (
@@ -177,7 +177,7 @@ function App() {
             alt="card img"
           />
           <div className="card__title-container">
-            <h2 className="card__title"></h2>
+            <h2 className="card__title">&nbsp;</h2>
             <div className="card__likes-container">
               <button
               type="button"
