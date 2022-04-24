@@ -5,29 +5,36 @@ class PopupWithForm extends React.Component {
     
 
     render () {
-        console.log(this.props.children)
+        // console.log(this.props)
+        // console.log(this.props.children)
+        // console.log(!this.props.imageSources)
         return (
             <>
-                <div className="popup popup_type_profile-avatar-edit">
-                    <div className="popup__container">
+                <div className={`popup popup_type_${this.props.name}`}  >
+                    <div 
+                        className={
+                            !this.props.imageSources ? "popup__container": "popup__container popup__container_type-image"
+                        }
+                    >
                         <button
                             type="button"
                             className="popup__close-btn"
                             aria-label="popup-close-button"
                         ></button>
-                        <h2 className="popup__title">{this.props.title}</h2>
-                        <form action="#" className="form" name={this.props.formName} noValidate>
-                            <input
-                            type="url"
-                            id="url-profile-input"
-                            className="form__input form__input_type_url"
-                            name="url"
-                            placeholder="Url"
-                            required
-                            />
-                            <span id="url-profile-input-error" className="form__error">&nbsp;</span>
-                            <button type="submit" className="form__save-btn">Save</button>
-                        </form>
+                        {   !this.props.imageSources ?
+                                <h2 className="popup__title">{this.props.title}</h2>
+                            :
+                                <>
+                                    <img
+                                        src={this.props.imageSources.src}
+                                        alt="full screen img"
+                                        className="popup__image"
+                                    />
+                                    <h2 className="popup__image-title">{this.props.imageSources.title}</h2>
+                                </>
+                        }
+                        {/* form here */}
+                        {this.props.children}   
                     </div>
                 </div>      
            </>
