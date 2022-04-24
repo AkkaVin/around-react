@@ -2,6 +2,7 @@
 import Header from './Header'
 import Main from './Main';
 import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
 
 function App() {
   return (
@@ -111,7 +112,7 @@ function App() {
         </div>
       </div>
 
-      <div className="popup popup_type_profile-avatar-edit">
+      {/* <div className="popup popup_type_profile-avatar-edit">
         <div className="popup__container">
           <button
             type="button"
@@ -132,8 +133,18 @@ function App() {
             <button type="submit" className="form__save-btn">Save</button>
           </form>
         </div>
-      </div>
+      </div> */}
 
+      <PopupWithForm 
+        title="Change profile picture"
+        formName="profile-avatar-edit-form"
+      >
+                        {/* <button
+                            type="button"
+                            className="popup__close-btn"
+                            aria-label="popup-close-button"
+                        ></button> */}
+      </PopupWithForm>
 
       <template className="card-template">
         <li className="card">
