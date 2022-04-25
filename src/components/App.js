@@ -4,105 +4,89 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import Form from './Form';
+
+const inputListEditProfileForm = [
+  {type:"text", id: "name", placeholder: "Name", minLength:"2", maxLength:"40"},
+  {type:"text", id: "job", placeholder: "Job", minLength:"2", maxLength:"200"},
+];
+
+const inputListAddCardForm = [
+  {type:"text", id: "cardTitle", placeholder: "Card title", maxLength:"50"},
+  {type:"url", id: "url", placeholder: "Url"},
+];
+
+const inputListEditProfileAvatarForm = [
+  {type:"url", id: "avatarUrl", placeholder: "Url"},
+];
+
 
 function App() {
+  
+  
+  
+  
   return (
     <>
+      {/* page */}
+
       <div className="main-page">
         <Header />
         <Main />
         <Footer />
       </div>
 
+      {/* popups */}
+
       <PopupWithForm 
         title="Edit profile"
         name="profile-edit"
       >
-        <form action="#" className="form" name="profile-edit-form" noValidate>
-          <input
-            type="text"
-            id="name-input"
-            className="form__input form__input_type_name"
-            name="name"
-            placeholder="name"
-            minLength="2"
-            maxLength="40"
-            required
-          />
-          <span id="name-input-error" className="form__error">&nbsp;</span>
-          <input
-            type="text"
-            id="job-input"
-            className="form__input form__input_type_job"
-            name="job"
-            placeholder="job"
-            minLength="2"
-            maxLength="200"
-            required
-          />
-          <span id="job-input-error" className="form__error">&nbsp;</span>
-          <button type="submit" className="form__save-btn">Save</button>
-        </form>
+        <Form 
+          name="profile-edit"
+          buttonLabel = "Save"
+          inputList = {inputListEditProfileForm}
+        />
       </PopupWithForm>
-
-      <PopupWithForm 
-          title="New place"
-          name="add-card"
-        >
-          <form action="#" className="form" name="add-card-form" noValidate>
-            <input
-              type="text"
-              id="cardTitle-input"
-              className="form__input form__input_type_card-title"
-              name="cardTitle"
-              placeholder="Card title"
-              maxLength="50"
-              required
-            />
-            <span id="cardTitle-input-error" className="form__error">&nbsp;</span>
-            <input
-              type="url"
-              id="url-input"
-              className="form__input form__input_type_url"
-              name="url"
-              placeholder="Url"
-              required
-            />
-            <span id="url-input-error" className="form__error">&nbsp;</span>
-            <button type="submit" className="form__save-btn">Create</button>
-          </form>
-      </PopupWithForm>
-
-      <ImagePopup
-        imageSources= {{ src: '&nbsp;', title: 'Image'}}
-      />
 
       <PopupWithForm
        title="Are you sure?"
        name="delete-card"
       >
-          <form action="#" className="form form_type_delete-card" name="delete-card-form" noValidate>
-            <button type="submit" className="form__save-btn">Yes</button>
-          </form>
+        <Form 
+          name="delete-card"
+          buttonLabel = "Yes"
+          inputList = {[]}
+        />
+      </PopupWithForm>
+     
+      <ImagePopup
+        imageSources= {{ src: '&nbsp;', title: 'Image'}}
+      />
+
+      <PopupWithForm 
+        title="New place"
+        name="add-card"
+      >
+        <Form 
+          name="add-card"
+          buttonLabel = "Save"
+          inputList = {inputListAddCardForm}
+        />
       </PopupWithForm>
 
       <PopupWithForm 
         title="Change profile picture"
         name="profile-avatar-edit"
       >
-          <form action="#" className="form" name="profile-avatar-edit-form" noValidate>
-            <input
-              type="url"
-              id="url-profile-input"
-              className="form__input form__input_type_url"
-              name="url"
-              placeholder="Url"
-              required
-            />
-            <span id="url-profile-input-error" className="form__error">&nbsp;</span>
-            <button type="submit" className="form__save-btn">Save</button>
-          </form>
+        <Form 
+          name="profile-avatar-edit"
+          buttonLabel = "Save"
+          inputList = {inputListEditProfileAvatarForm}
+        />
       </PopupWithForm>
+
+    {/* template */}
 
       <template className="card-template">
         <li className="card">

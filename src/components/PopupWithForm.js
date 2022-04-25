@@ -10,6 +10,7 @@ class PopupWithForm extends React.Component {
         return (
             <>
                 <div className={`popup popup_type_${this.props.name}` }  >
+                {/* popup_opened */}
                     <div className="popup__container" >
                         <button
                             type="button"
