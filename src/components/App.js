@@ -27,6 +27,8 @@ function App() {
   const [isEditProfilePopupOpen,  setEditProfilePopupOpen] = useState(false)
   const [isAddPlacePopupOpen,  setAddPlacePopupOpen] = useState(false)
   const [isEditAvatarPopupOpen,  setEditAvatarPopupOpen] = useState(false)
+  const [selectedCard,  setSelectedCard] = useState('')
+  
   
 const handleEditAvatarClick = () => {
     // document.querySelector(".popup_type_profile-avatar-edit").classList.add("popup_opened");
@@ -43,11 +45,16 @@ const handleAddPlaceClick = () => {
     // document.querySelector(".popup_type_add-card").classList.add("popup_opened");
     setAddPlacePopupOpen(true)
 }
-  
+
+const handleCardClick = (card) => {
+  setSelectedCard(card)
+}
+
 const closeAllPopups = () => {
   setEditAvatarPopupOpen(false);
-  setEditProfilePopupOpen(false)
-  setAddPlacePopupOpen(false)
+  setEditProfilePopupOpen(false);
+  setAddPlacePopupOpen(false);
+  setSelectedCard('');
 }
 
   
@@ -61,7 +68,7 @@ const closeAllPopups = () => {
           onEditProfileClick = {handleEditProfileClick}
           onAddPlaceClick = {handleAddPlaceClick}
           onEditAvatarClick = {handleEditAvatarClick}
-          onCardClick = ""
+          onCardClick = {handleCardClick}
         />
         <Footer />
       </div>
@@ -95,8 +102,9 @@ const closeAllPopups = () => {
       </PopupWithForm>
      
       <ImagePopup
-        imageSources= {{ src: '&nbsp;', title: 'Image'}}
-        isOpen=""
+        // imageSources= {{ src: '&nbsp;', title: 'Image'}}
+        // isOpen=""
+        card = {selectedCard}
         onClose = {closeAllPopups}
       />
 
@@ -126,33 +134,6 @@ const closeAllPopups = () => {
         />
       </PopupWithForm>
 
-    {/* template */}
-
-      <template className="card-template">
-        <li className="card">
-          <button
-            type="button"
-            className="card__remove-btn"
-            aria-label="card-like-button"
-          ></button>
-          <img 
-            className="card__image" 
-            src="&nbsp;"
-            alt="card img"
-          />
-          <div className="card__title-container">
-            <h2 className="card__title">&nbsp;</h2>
-            <div className="card__likes-container">
-              <button
-              type="button"
-              className="card__like-btn"
-              aria-label="card-like-button"
-              ></button>
-              <span className="card__likes-count"></span>
-            </div>
-          </div>
-        </li>
-      </template>
     </>    
   );
 }
