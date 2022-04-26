@@ -24,24 +24,32 @@ const inputListEditProfileAvatarForm = [
 
 function App() {
   
-  const {isEditProfilePopupOpen,  setEditProfilePopupOpen} = useState(false)
-  const {isAddPlacePopupOpen,  setAddPlacePopupOpen} = useState(false)
-  const {isEditAvatarPopupOpen,  setEditAvatarPopupOpen} = useState(false)
+  const [isEditProfilePopupOpen,  setEditProfilePopupOpen] = useState(false)
+  const [isAddPlacePopupOpen,  setAddPlacePopupOpen] = useState(false)
+  const [isEditAvatarPopupOpen,  setEditAvatarPopupOpen] = useState(false)
   
-  
-
 const handleEditAvatarClick = () => {
-    document.querySelector(".popup_type_profile-avatar-edit").classList.add("popup_opened");
+    // document.querySelector(".popup_type_profile-avatar-edit").classList.add("popup_opened");
+    setEditAvatarPopupOpen(true);
+
 }
 
 const handleEditProfileClick = () => {
-    document.querySelector(".popup_type_profile-edit").classList.add("popup_opened");
+    // document.querySelector(".popup_type_profile-edit").classList.add("popup_opened");
+    setEditProfilePopupOpen(true)
 }
 
 const handleAddPlaceClick = () => {
-    document.querySelector(".popup_type_add-card").classList.add("popup_opened");
+    // document.querySelector(".popup_type_add-card").classList.add("popup_opened");
+    setAddPlacePopupOpen(true)
 }
   
+const closeAllPopups = () => {
+  setEditAvatarPopupOpen(false);
+  setEditProfilePopupOpen(false)
+  setAddPlacePopupOpen(false)
+}
+
   
   return (
     <>
@@ -61,8 +69,10 @@ const handleAddPlaceClick = () => {
       {/* popups */}
 
       <PopupWithForm 
-        title="Edit profile"
-        name="profile-edit"
+        title = "Edit profile"
+        name  = "profile-edit"
+        isOpen  = {isEditProfilePopupOpen}
+        onClose = {closeAllPopups}
       >
         <Form 
           name="profile-edit"
@@ -74,6 +84,8 @@ const handleAddPlaceClick = () => {
       <PopupWithForm
        title="Are you sure?"
        name="delete-card"
+       isOpen=""
+       onClose = {closeAllPopups}
       >
         <Form 
           name="delete-card"
@@ -84,11 +96,15 @@ const handleAddPlaceClick = () => {
      
       <ImagePopup
         imageSources= {{ src: '&nbsp;', title: 'Image'}}
+        isOpen=""
+        onClose = {closeAllPopups}
       />
 
       <PopupWithForm 
         title="New place"
         name="add-card"
+        isOpen ={isAddPlacePopupOpen}
+        onClose = {closeAllPopups}
       >
         <Form 
           name="add-card"
@@ -100,6 +116,8 @@ const handleAddPlaceClick = () => {
       <PopupWithForm 
         title="Change profile picture"
         name="profile-avatar-edit"
+        isOpen= {isEditAvatarPopupOpen}
+        onClose = {closeAllPopups}
       >
         <Form 
           name="profile-avatar-edit"
