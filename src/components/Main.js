@@ -26,10 +26,8 @@ class Main extends React.Component {
         .catch (err => console.log(err))
     }
     render () {
-        // console.log(this.props)
 
         const cards = this.state.cards.map ( (card, i) => {
-            // console.log(card)
             return <Card 
                 key = {i}
                 card = {card}

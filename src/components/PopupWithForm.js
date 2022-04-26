@@ -2,18 +2,14 @@ import React from "react";
 
 class PopupWithForm extends React.Component {
 
-    
 
     render () {
-        // console.log(this.props)
-        // console.log(this.props.children)
         let popupClassName = `popup popup_type_${this.props.name}`;
         if (this.props.isOpen)  popupClassName+=" popup_opened" 
 
         return (
             <>
                 <div className={popupClassName}  >
-                {/* popup_opened */}
                     <div className="popup__container" >
                         <button onClick={this.props.onClose}
                             type="button"
@@ -28,8 +24,6 @@ class PopupWithForm extends React.Component {
            </>
         );
     }
-    
-    
 }
 
 export default PopupWithForm;

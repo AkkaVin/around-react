@@ -2,8 +2,6 @@ import React from "react";
 
 class ImagePopup extends React.Component {
 
-    
-
     render () {
         
         let popupClassName = "popup popup_type_image";

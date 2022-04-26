@@ -6,21 +6,9 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import Form from './Form';
 import { useState } from 'react';
-
-const inputListEditProfileForm = [
-  {type:"text", id: "name", placeholder: "Name", minLength:"2", maxLength:"40"},
-  {type:"text", id: "job", placeholder: "Job", minLength:"2", maxLength:"200"},
-];
-
-const inputListAddCardForm = [
-  {type:"text", id: "cardTitle", placeholder: "Card title", maxLength:"50"},
-  {type:"url", id: "url", placeholder: "Url"},
-];
-
-const inputListEditProfileAvatarForm = [
-  {type:"url", id: "avatarUrl", placeholder: "Url"},
-];
-
+import { inputListEditProfileForm,
+         inputListAddCardForm,
+         inputListEditProfileAvatarForm } from "../settings"
 
 function App() {
   
@@ -31,18 +19,14 @@ function App() {
   
   
 const handleEditAvatarClick = () => {
-    // document.querySelector(".popup_type_profile-avatar-edit").classList.add("popup_opened");
     setEditAvatarPopupOpen(true);
-
 }
 
 const handleEditProfileClick = () => {
-    // document.querySelector(".popup_type_profile-edit").classList.add("popup_opened");
     setEditProfilePopupOpen(true)
 }
 
 const handleAddPlaceClick = () => {
-    // document.querySelector(".popup_type_add-card").classList.add("popup_opened");
     setAddPlacePopupOpen(true)
 }
 
@@ -57,7 +41,6 @@ const closeAllPopups = () => {
   setSelectedCard('');
 }
 
-  
   return (
     <>
       {/* page */}
