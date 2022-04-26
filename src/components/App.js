@@ -5,6 +5,7 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import Form from './Form';
+import { useState } from 'react';
 
 const inputListEditProfileForm = [
   {type:"text", id: "name", placeholder: "Name", minLength:"2", maxLength:"40"},
@@ -23,7 +24,23 @@ const inputListEditProfileAvatarForm = [
 
 function App() {
   
+  const {isEditProfilePopupOpen,  setEditProfilePopupOpen} = useState(false)
+  const {isAddPlacePopupOpen,  setAddPlacePopupOpen} = useState(false)
+  const {isEditAvatarPopupOpen,  setEditAvatarPopupOpen} = useState(false)
   
+  
+
+const handleEditAvatarClick = () => {
+    document.querySelector(".popup_type_profile-avatar-edit").classList.add("popup_opened");
+}
+
+const handleEditProfileClick = () => {
+    document.querySelector(".popup_type_profile-edit").classList.add("popup_opened");
+}
+
+const handleAddPlaceClick = () => {
+    document.querySelector(".popup_type_add-card").classList.add("popup_opened");
+}
   
   
   return (
@@ -32,7 +49,12 @@ function App() {
 
       <div className="main-page">
         <Header />
-        <Main />
+        <Main 
+          onEditProfileClick = {handleEditProfileClick}
+          onAddPlaceClick = {handleAddPlaceClick}
+          onEditAvatarClick = {handleEditAvatarClick}
+          onCardClick = ""
+        />
         <Footer />
       </div>
 
