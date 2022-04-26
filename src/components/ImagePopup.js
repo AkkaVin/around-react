@@ -18,7 +18,7 @@ class ImagePopup extends React.Component {
                             aria-label="popup-close-button"
                         ></button>
                         <img
-                            src={this.props.card.link}
+                            src={this.props.card ? this.props.card.link: "$nbsp"}
                             alt="full screen img"
                             className="popup__image"
                         />

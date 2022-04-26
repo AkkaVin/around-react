@@ -12,11 +12,11 @@ class Form extends React.Component {
        
         <form action="#" className={formClassName} name="profile-edit-form" noValidate>
             
-            {   this.props.inputList.map( (input) => {
+            {   this.props.inputList.map( (input, i) => {
 
                 return < >
                     <input 
-                        // key = {input.id}
+                        key = {i}
                         type = {input.type}
                         id = {`${input.id}-input`}
                         className= {`form__input form__input_type_${input.id}`}

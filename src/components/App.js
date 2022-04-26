@@ -85,8 +85,6 @@ const closeAllPopups = () => {
       </PopupWithForm>
      
       <ImagePopup
-        // imageSources= {{ src: '&nbsp;', title: 'Image'}}
-        // isOpen=""
         card = {selectedCard}
         onClose = {closeAllPopups}
       />
