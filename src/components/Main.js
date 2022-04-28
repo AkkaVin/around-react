@@ -1,77 +1,74 @@
 import React from "react";
 import { api } from "../utils/Api";
 import Card from "./Card"
+import { useEffect, useState } from "react";
 
-class Main extends React.Component {
+function Main (props) {
 
-    constructor (props) {
-        super(props);
-        this.state = {
-            userName: '',
-            userDescription: '',
-            userAvatar: '',
-            cards: [],
-        };
-    }
-    
-    componentDidMount (){
+    const [userName,  setUserName] = useState('')    
+    const [userDescription,  setUserDescription] = useState('')
+    const [userAvatar,  setUserAvatar] = useState('')
+    const [cards,  setCards] = useState([])
+
+    useEffect(() => {
         Promise.all([api.getInitialCards(), api.getUserInfo()])
         .then(([cardInitlData, userInfo]) => {
-            this.setState({userName: userInfo.name});
-            this.setState({userAvatar: userInfo.avatar});
-            this.setState({userDescription: userInfo.about});
-
-            this.setState({cards: cardInitlData});
+     
+            setUserName(userInfo.name);
+            setUserAvatar(userInfo.avatar);
+            setUserDescription(userInfo.about);
+            setCards(cardInitlData);
         })
         .catch (err => console.log(err))
-    }
-    render () {
+    }, []);
 
-        const cards = this.state.cards.map ( (card, i) => {
-            return <Card 
-                key = {i}
-                card = {card}
-                onCardClick = {this.props.onCardClick}
-            />
-        })
-        return (
-            <>
-                <main>
-                <section className="profile">
-                <div className="profile__avatar-container" onClick={this.props.onEditAvatarClick}>
-                    <img
-                        className="profile__avatar"
-                        src={this.state.userAvatar}
-                        alt="avatar"
-                    />
-                </div>
-                <div className="profile__info">
-                    <h1 className="profile__name">{this.state.userName}</h1>
-                    <button
-                        type="button"
-                        className="profile__edit-btn"
-                        aria-label="profile-edit-button"
-                        onClick={this.props.onEditProfileClick}
-                    ></button>
-                    <p className="profile__job">{this.state.userDescription}</p>
-                </div>
+    const cardList = cards.map ( card => {
+        return <Card 
+            key = {card._id}
+            card = {card}
+            onCardClick = {props.onCardClick}
+        />
+    })
+
+
+    return (
+        <>
+            <main>
+            <section className="profile">
+            <div className="profile__avatar-container" onClick={props.onEditAvatarClick}>
+            {userAvatar && 
+                <img
+                    className="profile__avatar"
+                    src={userAvatar}
+                    alt="avatar"
+                />
+            }
+            </div>
+            <div className="profile__info">
+                <h1 className="profile__name">{userName}</h1>
                 <button
                     type="button"
-                    className="profile__add-card-btn"
-                    aria-label="profile-add-card-button"
-                    onClick={this.props.onAddPlaceClick}
+                    className="profile__edit-btn"
+                    aria-label="profile-edit-button"
+                    onClick={props.onEditProfileClick}
                 ></button>
-                </section>
-                <section className="cards">
-                <ul className="cards__container">
-                 {cards}
-                </ul>
-                </section>
-                </main>
-           </>
-        );
-    }
-    
+                <p className="profile__job">{userDescription}</p>
+            </div>
+            <button
+                type="button"
+                className="profile__add-card-btn"
+                aria-label="profile-add-card-button"
+                onClick={props.onAddPlaceClick}
+            ></button>
+            </section>
+            <section className="cards">
+            <ul className="cards__container">
+                {cardList}
+            </ul>
+            </section>
+            </main>
+        </>
+    );
     
 }
 
