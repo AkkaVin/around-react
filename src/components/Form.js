@@ -14,9 +14,8 @@ class Form extends React.Component {
             
             {   this.props.inputList.map( (input, i) => {
 
-                return < >
+                return <React.Fragment key = {input.id}>
                     <input 
-                        key = {i}
                         type = {input.type}
                         id = {`${input.id}-input`}
                         className= {`form__input form__input_type_${input.id}`}
@@ -27,7 +26,7 @@ class Form extends React.Component {
                         required = {true}
                     />
                     <span id={`${input.id}-input-error`} className="form__error">&nbsp;</span>
-                </>
+                  </React.Fragment>
             })}
             <button type="submit" className="form__save-btn">{this.props.buttonLabel}</button>
         </form>

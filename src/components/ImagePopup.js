@@ -3,8 +3,6 @@ import React from "react";
 class ImagePopup extends React.Component {
 
     render () {
-        console.log (this.props)
-
         let popupClassName = "popup popup_type_image";
         let src = "#";
         if (Object.keys(this.props.card).length !== 0)  {
