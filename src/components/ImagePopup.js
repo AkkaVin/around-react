@@ -3,10 +3,15 @@ import React from "react";
 class ImagePopup extends React.Component {
 
     render () {
-        
+        console.log (this.props)
+
         let popupClassName = "popup popup_type_image";
-        if (this.props.card)  popupClassName+=" popup_opened" 
-        
+        let src = "#";
+        if (Object.keys(this.props.card).length !== 0)  {
+            popupClassName+=" popup_opened" 
+            src = this.props.card.link;
+        }
+            
         return (
             <>
                 <div className={popupClassName}  >
@@ -18,7 +23,7 @@ class ImagePopup extends React.Component {
                             aria-label="popup-close-button"
                         ></button>
                         <img
-                            src={this.props.card ? this.props.card.link: "$nbsp"}
+                            src={src}
                             alt="full screen img"
                             className="popup__image"
                         />
