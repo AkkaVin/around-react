@@ -5,18 +5,28 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import Form from './Form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { inputListEditProfileForm,
          inputListAddCardForm,
          inputListEditProfileAvatarForm } from "../settings"
+import { api } from "../utils/Api";
+import { CurrentUserContext } from "../contexts/CurrentUserContext"
 
 function App() {
   
-  const [isEditProfilePopupOpen,  setEditProfilePopupOpen] = useState(false)
-  const [isAddPlacePopupOpen,  setAddPlacePopupOpen] = useState(false)
-  const [isEditAvatarPopupOpen,  setEditAvatarPopupOpen] = useState(false)
-  const [selectedCard,  setSelectedCard] = useState({})
+  const [isEditProfilePopupOpen,  setEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen,  setAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen,  setEditAvatarPopupOpen] = useState(false);
+  const [selectedCard,  setSelectedCard] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
   
+useEffect (() => {
+  api.getUserInfo()
+  .then ( userInfo => {
+    setCurrentUser(userInfo)
+  })
+  .catch (err => console.log(err))
+},[])
   
 const handleEditAvatarClick = () => {
     setEditAvatarPopupOpen(true);
@@ -42,6 +52,7 @@ const closeAllPopups = () => {
 }
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <>
       {/* page */}
 
@@ -115,7 +126,8 @@ const closeAllPopups = () => {
         />
       </PopupWithForm>
 
-    </>    
+    </> 
+    </CurrentUserContext.Provider>   
   );
 }
 
