@@ -25,9 +25,26 @@ function Main (props) {
             key = {card._id}
             card = {card}
             onCardClick = {props.onCardClick}
+            onCardLike = {handleCardLike}
         />
     })
 
+    function handleCardLike(card) {
+        // Check one more time if this card was already liked
+        const isLiked = card.likes.some(
+            user => user._id === currentUser._id
+        );
+        // Send a request to the API and getting the updated card data
+        const action = isLiked ? 'unlikeCard': 'likeCard';
+        api[action](card._id)
+        .then((updatedCard) => {
+            setCards((state) => 
+                state.map((currentCard) => 
+                    currentCard._id === card._id ? updatedCard : currentCard
+                )
+            );
+        });
+    } 
 
     return (
         <>

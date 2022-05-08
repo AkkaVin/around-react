@@ -10,6 +10,10 @@ class Card extends React.Component {
         this.props.onCardClick(this.props.card);
     }  
     
+    handleLikeClick = () => {
+        this.props.onCardLike(this.props.card);
+    }
+
     render() {
 
         const  isOwn = this.props.card.owner._id === this.context._id;
@@ -45,6 +49,7 @@ class Card extends React.Component {
                             type="button"
                             className={cardLikeButton}
                             aria-label="card-like-button"
+                            onClick={this.handleLikeClick}
                         ></button>
                         <span className="card__likes-count">{this.props.card.likes.length}</span>
                     </div>
