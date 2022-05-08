@@ -26,6 +26,7 @@ function Main (props) {
             card = {card}
             onCardClick = {props.onCardClick}
             onCardLike = {handleCardLike}
+            onCardDelete = {handleCardDelete}
         />
     })
 
@@ -38,13 +39,26 @@ function Main (props) {
         const action = isLiked ? 'unlikeCard': 'likeCard';
         api[action](card._id)
         .then((updatedCard) => {
-            setCards((state) => 
+            setCards(
+                (state) => 
                 state.map((currentCard) => 
                     currentCard._id === card._id ? updatedCard : currentCard
                 )
             );
-        });
+        })
+        .catch (err => console.log(err));
     } 
+
+    function  handleCardDelete (card)    {
+        api.deleteCard(card._id)
+        .then( () => {
+            setCards(
+                cards.filter(
+                    currentCard => currentCard._id !== card._id
+            ))
+        })
+        .catch (err => console.log(err));
+    }
 
     return (
         <>
