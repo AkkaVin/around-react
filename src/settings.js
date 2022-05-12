@@ -1,8 +1,7 @@
-import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 const inputListEditProfileForm = [
     {type:"text", id: "name", placeholder: "Name", minLength:"2", maxLength:"40"},
-    {type:"text", id: "job", placeholder: "Job", minLength:"2", maxLength:"200"},
+    {type:"text", id: "description", placeholder: "Description", minLength:"2", maxLength:"200"},
   ];
   
   const inputListAddCardForm = [

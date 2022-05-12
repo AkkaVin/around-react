@@ -6,11 +6,12 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import Form from './Form';
 import { useEffect, useState } from 'react';
-import { inputListEditProfileForm,
-         inputListAddCardForm,
+import { inputListAddCardForm,
          inputListEditProfileAvatarForm } from "../settings"
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext"
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 function App() {
   
@@ -44,6 +45,24 @@ const handleCardClick = (card) => {
   setSelectedCard(card)
 }
 
+const handleUpdateUser = (updatedUser) => {
+  api.updateUserInfoTextContent(updatedUser)
+    .then (updatedUserInfo => {
+      setCurrentUser(updatedUserInfo);
+      closeAllPopups();
+    })
+    .catch (err => console.log(err))
+}
+
+const handleUpdateAvatar = (updatedUser) => {
+  api.updateUserInfoAvatar(updatedUser)
+    .then (updatedUserAvatar => {
+      setCurrentUser(updatedUserAvatar);
+      closeAllPopups();
+    })
+    .catch (err => console.log(err))
+}
+
 const closeAllPopups = () => {
   setEditAvatarPopupOpen(false);
   setEditProfilePopupOpen(false);
@@ -69,20 +88,14 @@ const closeAllPopups = () => {
 
       {/* popups */}
 
-      <PopupWithForm 
-        title = "Edit profile"
-        name  = "profile-edit"
-        isOpen  = {isEditProfilePopupOpen}
-        onClose = {closeAllPopups}
-      >
-        <Form 
-          name="profile-edit"
-          buttonLabel = "Save"
-          inputList = {inputListEditProfileForm}
-        />
-      </PopupWithForm>
-
-      <PopupWithForm
+      {/* <EditProfilePopup 
+          isOpen  = {isEditProfilePopupOpen}
+          onClose = {closeAllPopups}
+          onUpdateUser = {handleUpdateUser}
+      />
+       */}
+{/* 
+       <PopupWithForm
        title="Are you sure?"
        name="delete-card"
        isOpen=""
@@ -93,14 +106,14 @@ const closeAllPopups = () => {
           buttonLabel = "Yes"
           inputList = {[]}
         />
-      </PopupWithForm>
+      </PopupWithForm> */}
      
       <ImagePopup
         card = {selectedCard}
         onClose = {closeAllPopups}
       />
 
-      <PopupWithForm 
+      {/*<PopupWithForm 
         title="New place"
         name="add-card"
         isOpen ={isAddPlacePopupOpen}
@@ -111,9 +124,15 @@ const closeAllPopups = () => {
           buttonLabel = "Save"
           inputList = {inputListAddCardForm}
         />
-      </PopupWithForm>
+      </PopupWithForm>*/}
 
-      <PopupWithForm 
+      <EditAvatarPopup 
+                isOpen  = {isEditAvatarPopupOpen}
+                onClose = {closeAllPopups}
+                onUpdateAvatar = {handleUpdateAvatar}
+      />
+
+      {/* <PopupWithForm 
         title="Change profile picture"
         name="profile-avatar-edit"
         isOpen= {isEditAvatarPopupOpen}
@@ -124,7 +143,7 @@ const closeAllPopups = () => {
           buttonLabel = "Save"
           inputList = {inputListEditProfileAvatarForm}
         />
-      </PopupWithForm>
+      </PopupWithForm>  */}
 
     </> 
     </CurrentUserContext.Provider>   
