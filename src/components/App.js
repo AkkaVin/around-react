@@ -88,12 +88,12 @@ const closeAllPopups = () => {
 
       {/* popups */}
 
-      {/* <EditProfilePopup 
+      <EditProfilePopup 
           isOpen  = {isEditProfilePopupOpen}
           onClose = {closeAllPopups}
           onUpdateUser = {handleUpdateUser}
       />
-       */}
+      
 {/* 
        <PopupWithForm
        title="Are you sure?"

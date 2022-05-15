@@ -22,6 +22,7 @@ function EditProfilePopup (props) {
             description: currentUser.about
         })
     }, [currentUser])
+    // }, [currentUser])
 
     function handleChange(e) {
      
