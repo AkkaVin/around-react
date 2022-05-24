@@ -9,6 +9,21 @@ function EditProfilePopup (props) {
     const {isOpen,onClose} = props;
     const currentUser = React.useContext(CurrentUserContext);
 
+    /**
+     * 
+      let formClassName = "form";
+      if (this.props.inputList.length === 0)
+          formClassName+= " form_type_delete-card";
+
+      let valuesObj = null;
+      let refs = null;
+      if (this.props.inputsState && Object.keys(this.props.inputsState).length > 0)
+        valuesObj = this.props.inputsState;
+      else
+        refs = this.props.inputsRefs; 
+     
+    */
+ 
     // const {name, setName} = useState('')
     // const {description, setDescription} = useState('')
     const [inputsState, setInputsState] = useState({
@@ -50,7 +65,7 @@ function EditProfilePopup (props) {
             isOpen  = {isOpen}
             onClose = {onClose}
         >
-            <Form 
+            {/* <Form 
                 name="profile-edit"
                 buttonLabel = "Save"
                 inputList = {inputListEditProfileForm}
@@ -59,7 +74,36 @@ function EditProfilePopup (props) {
                 onChange = {handleChange}
                 onSubmit = {handleSubmit}
 
-            />
+            /> */}
+            <form 
+                action="#" 
+                className="form" 
+                name="profile-edit-form" 
+                noValidate
+                onSubmit={handleSubmit}
+            >
+                
+                {   inputListEditProfileForm.map( input =>  {
+
+                    return <React.Fragment key = {input.id}>
+                        <input
+                            value = {inputsState[input.id]}
+                            // ref = {refs[input.id]}
+                            type = {input.type}
+                            id = {`${input.id}-input`}
+                            className= {`form__input form__input_type_${input.id}`}
+                            name = {input.id}
+                            placeholder = {input.placeholder}
+                            minLength = {input.minLength }
+                            maxLength = {input.maxLength }
+                            required = {true}
+                            onChange = {handleChange}
+                        />
+                        <span id={`${input.id}-input-error`} className="form__error">&nbsp;</span>
+                    </React.Fragment>
+                })}
+                <button type="submit" className="form__save-btn">Save</button>
+            </form>
       </PopupWithForm>
     )
 

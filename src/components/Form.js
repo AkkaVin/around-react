@@ -29,11 +29,24 @@ class Form extends React.Component {
             {   this.props.inputList.map( input =>  {
 
                 return <React.Fragment key = {input.id}>
-                    <Input 
+                    {/* <Input 
                       input = {input}
                       onChange = {this.props.onChange}
                       valueData = {valuesObj ? valuesObj[input.id] : ""}
                       refData = {refs ? refs[input.id] : null}
+                    /> */}
+                    <input
+                      value = {valuesObj[input.id]}
+                      // ref = {refs[input.id]}
+                      type = {input.type}
+                      id = {`${input.id}-input`}
+                      className= {`form__input form__input_type_${input.id}`}
+                      name = {input.id}
+                      placeholder = {input.placeholder}
+                      minLength = {input.minLength }
+                      maxLength = {input.maxLength }
+                      required = {true}
+                      onChange = {this.props.onChange}
                     />
                     <span id={`${input.id}-input-error`} className="form__error">&nbsp;</span>
                   </React.Fragment>
