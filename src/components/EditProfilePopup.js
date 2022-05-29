@@ -27,12 +27,13 @@ function EditProfilePopup (props) {
     // const {name, setName} = useState('')
     // const {description, setDescription} = useState('')
     const [inputsState, setInputsState] = useState({
-        name: "",
-        description: ""
+        // name: "",
+        // description: ""
     })
 
     useEffect(() => {
         setInputsState({
+            
             name: currentUser.name,
             description: currentUser.about
         })
@@ -75,6 +76,7 @@ function EditProfilePopup (props) {
                 onSubmit = {handleSubmit}
 
             /> */}
+            { //JSON.stringify(inputsState) !== {} &&
             <form 
                 action="#" 
                 className="form" 
@@ -82,9 +84,13 @@ function EditProfilePopup (props) {
                 noValidate
                 onSubmit={handleSubmit}
             >
-                
-                {   inputListEditProfileForm.map( input =>  {
+                {/* {console.log(inputsState)}
+                {console.log(Object.values(inputsState))}
+                {console.log(JSON.stringify(inputsState))} */}
+                {   
+                    inputListEditProfileForm.map( input =>  {
 
+                    // console.log(inputsState[input.id])
                     return <React.Fragment key = {input.id}>
                         <input
                             value = {inputsState[input.id]}
@@ -103,7 +109,7 @@ function EditProfilePopup (props) {
                     </React.Fragment>
                 })}
                 <button type="submit" className="form__save-btn">Save</button>
-            </form>
+            </form>}
       </PopupWithForm>
     )
 

@@ -12,7 +12,7 @@ function EditAvatarPopup (props) {
     const urlInputRef = useRef('');
 
     useEffect(() => {
-        urlInputRef.current.value = currentUser.avatar;
+        //urlInputRef.current.value = currentUser.avatar;
     }, [currentUser])
 
     function handleChange(e) {
