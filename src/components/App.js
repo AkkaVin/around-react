@@ -94,56 +94,31 @@ const closeAllPopups = () => {
           onUpdateUser = {handleUpdateUser}
       />
       
-{/* 
-       <PopupWithForm
-       title="Are you sure?"
-       name="delete-card"
-       isOpen=""
-       onClose = {closeAllPopups}
-      >
-        <Form 
-          name="delete-card"
-          buttonLabel = "Yes"
-          inputList = {[]}
-        />
-      </PopupWithForm> */}
-     
       <ImagePopup
         card = {selectedCard}
         onClose = {closeAllPopups}
       />
 
-      {/*<PopupWithForm 
+      <PopupWithForm 
         title="New place"
         name="add-card"
         isOpen ={isAddPlacePopupOpen}
         onClose = {closeAllPopups}
+        onChange = {()=> {}}
       >
         <Form 
           name="add-card"
           buttonLabel = "Save"
           inputList = {inputListAddCardForm}
+          inputsRefs = {{}}
         />
-      </PopupWithForm>*/}
+      </PopupWithForm>
 
       <EditAvatarPopup 
                 isOpen  = {isEditAvatarPopupOpen}
                 onClose = {closeAllPopups}
                 onUpdateAvatar = {handleUpdateAvatar}
       />
-
-      {/* <PopupWithForm 
-        title="Change profile picture"
-        name="profile-avatar-edit"
-        isOpen= {isEditAvatarPopupOpen}
-        onClose = {closeAllPopups}
-      >
-        <Form 
-          name="profile-avatar-edit"
-          buttonLabel = "Save"
-          inputList = {inputListEditProfileAvatarForm}
-        />
-      </PopupWithForm>  */}
 
     </> 
     </CurrentUserContext.Provider>   
