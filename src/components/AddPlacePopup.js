@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { inputListEditProfileForm } from "../settings";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import React from "react";
+import { inputListAddCardForm } from "../settings";
 import PopupWithForm from "./PopupWithForm";
 import Form from "./Form";
+import { useState } from "react";
 
-function EditProfilePopup (props) {
-    
+function AddPlacePopup (props) { 
+
     const {isOpen,onClose} = props;
-    const currentUser = React.useContext(CurrentUserContext);
 
-    // const {name, setName} = useState('')
-    // const {description, setDescription} = useState('')
     const [inputsState, setInputsState] = useState({
-        name: "",
-        description: ""
+        cardTitle: "",
+        url: ""
     })
-
-    useEffect(() => {
-        setInputsState({
-            name: currentUser.name,
-            description: currentUser.about
-        })
-    }, [currentUser])
-    // }, [currentUser])
 
     function handleChange(e) {
      
@@ -32,19 +21,39 @@ function EditProfilePopup (props) {
         });
         // console.log (inputsState)
     }
-    
+
     function handleSubmit (e) {
         // alert('A obj was submitted: ' + {inputsState});
         e.preventDefault();
         // console.log (inputsState)
-        props.onUpdateUser({
-            name: inputsState.name,
-            about: inputsState.description,
+        props.onAddPlaceSubmit({
+             name: inputsState.cardTitle,
+             link: inputsState.url,
         });
     }
 
     return (
+
         <PopupWithForm 
+            title="New place"
+            name="add-card"
+            isOpen  = {isOpen}
+            onClose = {onClose}
+            onChange = {()=> {}}
+        >
+            <Form 
+                name="add-card"
+                buttonLabel = "Save"
+                inputList = {inputListAddCardForm}
+                inputsState = {inputsState}
+                inputsRefs = {{}}
+                onChange = {handleChange}
+                onSubmit = {handleSubmit}
+
+            />
+        </PopupWithForm>
+
+        /* <PopupWithForm 
             title = "Edit profile"
             name  = "profile-edit"
             isOpen  = {isOpen}
@@ -59,9 +68,9 @@ function EditProfilePopup (props) {
                 onChange = {handleChange}
                 onSubmit = {handleSubmit}
             />
-      </PopupWithForm>
+        </PopupWithForm> */
     )
 
 }
 
-export default EditProfilePopup;
+export default AddPlacePopup;
