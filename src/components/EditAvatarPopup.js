@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { inputListEditProfileAvatarForm } from "../settings";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import PopupWithForm from "./PopupWithForm";
@@ -9,24 +9,22 @@ function EditAvatarPopup (props) {
     const {isOpen,onClose} = props;
     const currentUser = React.useContext(CurrentUserContext);
 
-    const urlInputRef = useRef('');
+    const urlInputRef = useRef(currentUser.avatar);
 
-    useEffect(() => {
-        urlInputRef.current.value = currentUser.avatar;
-    }, [currentUser])
+    //console.log(urlInputRef)
+    // useEffect(() => {
+    //     // console.log(currentUser)
+    //     if (JSON.stringify(currentUser)!=="{}"){
+    //         console.log(currentUser)
+    //         urlInputRef.current.value = currentUser.avatar;
+    //     }
+    //     else    
+    //         console.log("empty")
+    // }, [currentUser])
 
-    function handleChange(e) {
-     
-        // console.log (inputsState)
-    }
     
     function handleSubmit (e) {
-        // alert('A obj was submitted: ' + {inputsState});
         e.preventDefault();
-        
-        // console.log (urlInputRef.current.value)
-        
-        
         props.onUpdateAvatar({
             avatar: urlInputRef.current.value
         });
@@ -47,13 +45,12 @@ function EditAvatarPopup (props) {
                 inputsRefs = {{
                     avatarUrl: urlInputRef
                 }}
-                onChange = {handleChange}
+                onChange = {()=> {}}
                 onSubmit = {handleSubmit}
 
             />
       </PopupWithForm>
     )
-
 }
 
 export default EditAvatarPopup;

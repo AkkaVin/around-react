@@ -126,11 +126,11 @@ const closeAllPopups = () => {
         />
       </PopupWithForm>*/}
 
-      {/* <EditAvatarPopup 
+      <EditAvatarPopup 
                 isOpen  = {isEditAvatarPopupOpen}
                 onClose = {closeAllPopups}
                 onUpdateAvatar = {handleUpdateAvatar}
-      /> */}
+      />
 
       {/* <PopupWithForm 
         title="Change profile picture"
