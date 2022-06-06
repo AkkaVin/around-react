@@ -7,58 +7,16 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 function Main (props) {
 
     const currentUser = React.useContext(CurrentUserContext)
-    // const [userName,  setUserName] = useState('')    
-    // const [userDescription,  setUserDescription] = useState('')
-    // const [userAvatar,  setUserAvatar] = useState('')
-    const [cards,  setCards] = useState([])
 
-    useEffect(() => {
-        api.getInitialCards()
-        .then( cardInitlData => {
-            setCards(cardInitlData);
-        })
-        .catch (err => console.log(err))
-    }, []);
-
-    const cardList = cards.map ( card => {
+    const cardList = props.cards.map ( card => {
         return <Card 
             key = {card._id}
             card = {card}
             onCardClick = {props.onCardClick}
-            onCardLike = {handleCardLike}
-            onCardDelete = {handleCardDelete}
+            onCardLike = {props.onCardLike}
+            onCardDelete = {props.onCardDelete}
         />
     })
-
-    function handleCardLike(card) {
-        // Check one more time if this card was already liked
-        const isLiked = card.likes.some(
-            user => user._id === currentUser._id
-        );
-        // Send a request to the API and getting the updated card data
-        const action = isLiked ? 'unlikeCard': 'likeCard';
-        api[action](card._id)
-        .then((updatedCard) => {
-            setCards(
-                (state) => 
-                state.map((currentCard) => 
-                    currentCard._id === card._id ? updatedCard : currentCard
-                )
-            );
-        })
-        .catch (err => console.log(err));
-    } 
-
-    function  handleCardDelete (card)    {
-        api.deleteCard(card._id)
-        .then( () => {
-            setCards(
-                cards.filter(
-                    currentCard => currentCard._id !== card._id
-            ))
-        })
-        .catch (err => console.log(err));
-    }
 
     return (
         <>
