@@ -9,7 +9,6 @@ class Form extends React.Component {
 
     componentDidMount () {
       this.props.inputList.forEach ( (input) => {
-        // this.state = {...this.state, [input.id]: ""}
         this.setState ({...this.state, [input.id]: ""})
       })
     }
@@ -21,11 +20,10 @@ class Form extends React.Component {
           formClassName+= " form_type_delete-card";
 
       let valuesObj = null;
-     // let refs = null;
+
       if (this.props.inputsState && Object.keys(this.props.inputsState).length > 0)
         valuesObj = this.props.inputsState;
-      //else
-      //  refs = this.props.inputsRefs;
+
       return (
        
         <form 
@@ -41,7 +39,6 @@ class Form extends React.Component {
                 return <React.Fragment key = {input.id}>
                     <input
                       value = {(valuesObj && valuesObj[input.id]) || ""}
-                      ref = {this.props.inputsRefs[input.id] || null}
                       type = {input.type}
                       id = {`${input.id}-input`}
                       className= {`form__input form__input_type_${input.id}`}
@@ -50,7 +47,6 @@ class Form extends React.Component {
                       minLength = {input.minLength }
                       maxLength = {input.maxLength }
                       required = {true}
-                      // onChange = {Object.keys(this.props.onChange).length > 0 ? this.props.onChange : ""}
                       onChange = {this.props.onChange}
                     />
                     <span id={`${input.id}-input-error`} className="form__error">&nbsp;</span>

@@ -1,4 +1,4 @@
-# Projects 10: Around The U.S.
+# Projects 10-11: Around The U.S.
 
 ### Around The U.S. at Yandex Practicum
 

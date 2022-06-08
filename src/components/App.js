@@ -2,12 +2,8 @@
 import Header from './Header'
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import Form from './Form';
 import { useEffect, useState } from 'react';
-import { inputListAddCardForm,
-         inputListEditProfileAvatarForm } from "../settings"
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext"
 import EditProfilePopup from './EditProfilePopup';
@@ -159,22 +155,6 @@ const closeAllPopups = () => {
           onAddPlaceSubmit = {handleAddPlaceSubmit}
       />
       
-      
-      {/* <PopupWithForm 
-        title="New place"
-        name="add-card"
-        isOpen ={isAddPlacePopupOpen}
-        onClose = {closeAllPopups}
-        onChange = {()=> {}}
-      >
-        <Form 
-          name="add-card"
-          buttonLabel = "Save"
-          inputList = {inputListAddCardForm}
-          inputsRefs = {{}}
-        />
-      </PopupWithForm> */}
-
       <EditAvatarPopup 
                 isOpen  = {isEditAvatarPopupOpen}
                 onClose = {closeAllPopups}

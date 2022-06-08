@@ -9,8 +9,6 @@ function EditProfilePopup (props) {
     const {isOpen,onClose} = props;
     const currentUser = React.useContext(CurrentUserContext);
 
-    // const {name, setName} = useState('')
-    // const {description, setDescription} = useState('')
     const [inputsState, setInputsState] = useState({
         name: "",
         description: ""
@@ -22,7 +20,6 @@ function EditProfilePopup (props) {
             description: currentUser.about
         })
     }, [currentUser])
-    // }, [currentUser])
 
     function handleChange(e) {
      
@@ -30,13 +27,10 @@ function EditProfilePopup (props) {
           ...inputsState,
           [e.target.name]: e.target.value
         });
-        // console.log (inputsState)
     }
     
     function handleSubmit (e) {
-        // alert('A obj was submitted: ' + {inputsState});
         e.preventDefault();
-        // console.log (inputsState)
         props.onUpdateUser({
             name: inputsState.name,
             about: inputsState.description,

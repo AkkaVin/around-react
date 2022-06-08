@@ -19,13 +19,10 @@ function AddPlacePopup (props) {
           ...inputsState,
           [e.target.name]: e.target.value
         });
-        // console.log (inputsState)
     }
 
     function handleSubmit (e) {
-        // alert('A obj was submitted: ' + {inputsState});
         e.preventDefault();
-        // console.log (inputsState)
         props.onAddPlaceSubmit({
              name: inputsState.cardTitle,
              link: inputsState.url,
@@ -52,25 +49,7 @@ function AddPlacePopup (props) {
 
             />
         </PopupWithForm>
-
-        /* <PopupWithForm 
-            title = "Edit profile"
-            name  = "profile-edit"
-            isOpen  = {isOpen}
-            onClose = {onClose}
-        >
-            <Form 
-                name="profile-edit"
-                buttonLabel = "Save"
-                inputList = {inputListEditProfileForm}
-                inputsState = {inputsState}
-                inputsRefs = {{}}
-                onChange = {handleChange}
-                onSubmit = {handleSubmit}
-            />
-        </PopupWithForm> */
     )
-
 }
 
 export default AddPlacePopup;

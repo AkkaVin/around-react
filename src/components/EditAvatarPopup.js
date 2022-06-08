@@ -2,27 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { inputListEditProfileAvatarForm } from "../settings";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import PopupWithForm from "./PopupWithForm";
-import Form from "./Form";
 
 function EditAvatarPopup (props) {
     
     const {isOpen,onClose} = props;
+    const avatarInputProps = inputListEditProfileAvatarForm[0];
     const currentUser = React.useContext(CurrentUserContext);
 
     const urlInputRef = useRef(currentUser.avatar);
 
-    //console.log(urlInputRef)
-    // useEffect(() => {
-    //     // console.log(currentUser)
-    //     if (JSON.stringify(currentUser)!=="{}"){
-    //         console.log(currentUser)
-    //         urlInputRef.current.value = currentUser.avatar;
-    //     }
-    //     else    
-    //         console.log("empty")
-    // }, [currentUser])
+    useEffect(() => {
+             urlInputRef.current.value = currentUser.avatar;
+    }, [currentUser])
 
-    
     function handleSubmit (e) {
         e.preventDefault();
         props.onUpdateAvatar({
@@ -37,18 +29,27 @@ function EditAvatarPopup (props) {
             isOpen  = {isOpen}
             onClose = {onClose}
         >
-            <Form 
-                name="profile-avatar-edit"
-                buttonLabel = "Save"
-                inputList = {inputListEditProfileAvatarForm}
-                inputsState = {{}}
-                inputsRefs = {{
-                    avatarUrl: urlInputRef
-                }}
-                onChange = {()=> {}}
-                onSubmit = {handleSubmit}
-
-            />
+            <form 
+                action="#" 
+                className="form" 
+                name="profile-edit-form" 
+                noValidate
+                onSubmit={handleSubmit}
+            >
+                <input
+                    ref = {urlInputRef}
+                    type = {avatarInputProps.type}
+                    id = {`${avatarInputProps.id}-input`}
+                    className= {`form__input form__input_type_${avatarInputProps.id}`}
+                    name = {avatarInputProps.id}
+                    placeholder = {avatarInputProps.placeholder}
+                    minLength = {avatarInputProps.minLength }
+                    maxLength = {avatarInputProps.maxLength }
+                    required = {true}
+                />
+                <span id={`${avatarInputProps.id}-input-error`} className="form__error">&nbsp;</span>
+                <button type="submit" className="form__save-btn">Save</button>
+            </form>
       </PopupWithForm>
     )
 }
