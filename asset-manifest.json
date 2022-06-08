@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/AkkaVin/around-react/static/css/main.08156ca8.css",
+    "main.js": "/AkkaVin/around-react/static/js/main.4b2df399.js",
+    "static/js/787.1c78f32b.chunk.js": "/AkkaVin/around-react/static/js/787.1c78f32b.chunk.js",
+    "static/media/Inter-Medium.woff?v=3.19": "/AkkaVin/around-react/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff?v=3.19": "/AkkaVin/around-react/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/AkkaVin/around-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2?v=3.19": "/AkkaVin/around-react/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2?v=3.19": "/AkkaVin/around-react/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/AkkaVin/around-react/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/AkkaVin/around-react/static/media/logo.4e8e0a1d604782a0dff8.svg",
+    "static/media/card__like-btn.svg": "/AkkaVin/around-react/static/media/card__like-btn.3826c074a1b94b101e38.svg",
+    "index.html": "/AkkaVin/around-react/index.html",
+    "static/media/card__remove-btn.svg": "/AkkaVin/around-react/static/media/card__remove-btn.8cb59aa98088a1653f62.svg",
+    "static/media/card__like-btn_active.svg": "/AkkaVin/around-react/static/media/card__like-btn_active.226461bd64622361ffb2.svg",
+    "static/media/profile__edit-btn.svg": "/AkkaVin/around-react/static/media/profile__edit-btn.8667ac4a523e8fc42e59.svg",
+    "static/media/profile__avatar-on-hover.svg": "/AkkaVin/around-react/static/media/profile__avatar-on-hover.a086f758840ae814ecde.svg",
+    "static/media/popup__close-btn.svg": "/AkkaVin/around-react/static/media/popup__close-btn.d86bb2edc2f6eadb96b7.svg",
+    "static/media/profile__add-card-btn.svg": "/AkkaVin/around-react/static/media/profile__add-card-btn.d86bb2edc2f6eadb96b7.svg",
+    "main.08156ca8.css.map": "/AkkaVin/around-react/static/css/main.08156ca8.css.map",
+    "main.4b2df399.js.map": "/AkkaVin/around-react/static/js/main.4b2df399.js.map",
+    "787.1c78f32b.chunk.js.map": "/AkkaVin/around-react/static/js/787.1c78f32b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08156ca8.css",
+    "static/js/main.4b2df399.js"
+  ]
+}
