@@ -22,5 +22,5 @@
 
 **Links**
 
-* [Link to project](https://akkavin.github.io/web_project_4/index.html)
+* [Link to project](https://github.com/AkkaVin/around-react)
 
